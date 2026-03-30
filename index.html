@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>50 Cantos Congregacionales sobre la Gracia — Teocéntricos</title>
+<title>50 Cantos Congregacionales sobre la Gracia — Con Audio</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Cinzel:wght@400;600&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0c0b09;
     --bg2: #141210;
+    --bg3: #1a1815;
     --gold: #c9a84c;
     --gold-light: #e4c87a;
     --gold-dim: #7a6530;
     --cream: #f0e9d6;
     --cream-dim: #9e9070;
     --red: #8b3030;
-    --red-light: #c04848;
+    --blue: #3a6090;
+    --green: #2d6640;
+    --purple: #5a3880;
     --white: #fff8ee;
-    --border: rgba(201,168,76,0.2);
+    --border: rgba(201,168,76,0.18);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
@@ -28,41 +31,26 @@
     line-height: 1.7;
     min-height: 100vh;
   }
-
-  /* Noise texture overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.4;
-  }
-
   .page-wrapper {
-    position: relative;
-    z-index: 1;
-    max-width: 940px;
+    max-width: 980px;
     margin: 0 auto;
-    padding: 60px 28px 80px;
+    padding: 56px 24px 80px;
   }
 
   /* HEADER */
   .header {
     text-align: center;
-    padding-bottom: 48px;
+    padding-bottom: 44px;
     border-bottom: 1px solid var(--border);
-    margin-bottom: 52px;
-    position: relative;
+    margin-bottom: 48px;
   }
   .header::after {
-    content: '✦ ✦ ✦';
+    content: '✦  ✦  ✦';
     display: block;
     color: var(--gold-dim);
     font-size: 11px;
-    letter-spacing: 8px;
-    margin-top: 28px;
+    letter-spacing: 10px;
+    margin-top: 26px;
   }
   .subtitle-top {
     font-family: 'Cinzel', serif;
@@ -70,42 +58,74 @@
     letter-spacing: 4px;
     color: var(--gold);
     text-transform: uppercase;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     display: block;
   }
   .main-title {
     font-family: 'Playfair Display', serif;
-    font-size: clamp(28px, 5vw, 52px);
+    font-size: clamp(26px, 5vw, 50px);
     font-weight: 700;
     color: var(--white);
     line-height: 1.15;
-    margin-bottom: 10px;
   }
-  .main-title em {
-    color: var(--gold);
-    font-style: italic;
-  }
+  .main-title em { color: var(--gold); font-style: italic; }
   .header-desc {
     font-size: 15px;
     color: var(--cream-dim);
-    max-width: 600px;
-    margin: 18px auto 0;
+    max-width: 580px;
+    margin: 16px auto 0;
     font-style: italic;
-    line-height: 1.6;
   }
 
-  /* CRITERIA BOX */
+  /* AUDIO LEGEND */
+  .audio-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+    background: rgba(201,168,76,0.04);
+    border: 1px solid var(--border);
+    padding: 16px 20px;
+    border-radius: 3px;
+    margin-bottom: 36px;
+  }
+  .audio-legend-title {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--gold-dim);
+    text-transform: uppercase;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .al-item {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 13px;
+    color: var(--cream-dim);
+  }
+  .al-dot {
+    width: 10px; height: 10px;
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  .dot-yt { background: #c00; }
+  .dot-sp { background: #1db954; }
+  .dot-mp3 { background: #c9a84c; }
+  .dot-letra { background: #5a7ab0; }
+
+  /* CRITERIA */
   .criteria {
-    background: rgba(201,168,76,0.05);
+    background: rgba(201,168,76,0.04);
     border: 1px solid var(--border);
     border-left: 3px solid var(--gold);
-    padding: 22px 28px;
-    margin-bottom: 52px;
+    padding: 20px 26px;
+    margin-bottom: 48px;
     border-radius: 2px;
   }
   .criteria h3 {
     font-family: 'Cinzel', serif;
-    font-size: 11px;
+    font-size: 10px;
     letter-spacing: 3px;
     color: var(--gold);
     margin-bottom: 12px;
@@ -114,13 +134,13 @@
   .criteria ul {
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 8px 24px;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 7px 20px;
   }
   .criteria li {
     font-size: 13.5px;
     color: var(--cream-dim);
-    padding-left: 16px;
+    padding-left: 14px;
     position: relative;
   }
   .criteria li::before {
@@ -133,15 +153,13 @@
   }
 
   /* SECTION */
-  .section {
-    margin-bottom: 64px;
-  }
+  .section { margin-bottom: 60px; }
   .section-header {
     display: flex;
-    align-items: center;
-    gap: 18px;
-    margin-bottom: 32px;
-    padding-bottom: 14px;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding-bottom: 12px;
     border-bottom: 1px solid var(--border);
   }
   .section-number {
@@ -151,38 +169,46 @@
     letter-spacing: 2px;
     white-space: nowrap;
     flex-shrink: 0;
+    padding-top: 4px;
   }
   .section-title {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
+    font-size: 21px;
     color: var(--gold-light);
     font-weight: 600;
   }
   .section-desc {
     font-size: 13px;
     color: var(--cream-dim);
-    margin-top: 4px;
+    margin-top: 3px;
     font-style: italic;
+  }
+  .count-badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--bg);
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    font-weight: 600;
+    padding: 2px 7px;
+    border-radius: 2px;
+    letter-spacing: 1px;
+    vertical-align: middle;
+    margin-left: 7px;
   }
 
   /* SONG CARD */
-  .songs-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-  }
+  .songs-grid { display: flex; flex-direction: column; gap: 2px; }
   .song-card {
-    display: grid;
-    grid-template-columns: 40px 1fr auto;
-    gap: 0 18px;
-    align-items: start;
-    padding: 16px 18px;
     background: var(--bg2);
     border: 1px solid transparent;
     border-radius: 3px;
-    transition: all 0.2s ease;
+    padding: 14px 16px 14px 14px;
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 0 14px;
+    transition: border-color 0.2s, background 0.2s;
     position: relative;
-    overflow: hidden;
   }
   .song-card::before {
     content: '';
@@ -190,155 +216,163 @@
     left: 0; top: 0; bottom: 0;
     width: 0;
     background: var(--gold);
-    transition: width 0.2s ease;
+    border-radius: 3px 0 0 3px;
+    transition: width 0.2s;
   }
   .song-card:hover {
-    border-color: var(--border);
-    background: rgba(201,168,76,0.04);
+    border-color: rgba(201,168,76,0.2);
+    background: rgba(201,168,76,0.03);
   }
-  .song-card:hover::before {
-    width: 2px;
-  }
+  .song-card:hover::before { width: 2px; }
   .song-num {
     font-family: 'Cinzel', serif;
-    font-size: 12px;
+    font-size: 11px;
     color: var(--gold-dim);
-    padding-top: 2px;
+    padding-top: 3px;
     text-align: right;
   }
   .song-body {}
+  .song-top {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .song-info {}
   .song-title {
     font-family: 'Playfair Display', serif;
-    font-size: 17px;
+    font-size: 16.5px;
     color: var(--white);
     font-weight: 600;
-    line-height: 1.3;
-    margin-bottom: 3px;
+    line-height: 1.25;
+    margin-bottom: 2px;
   }
   .song-author {
-    font-size: 12px;
+    font-size: 11.5px;
     color: var(--gold-dim);
     font-style: italic;
-    margin-bottom: 5px;
-    font-family: 'EB Garamond', serif;
+    margin-bottom: 6px;
   }
-  .song-note {
-    font-size: 13px;
-    color: var(--cream-dim);
-    line-height: 1.5;
-  }
+  .song-tags { margin-bottom: 6px; }
   .tag {
     display: inline-block;
     font-family: 'Cinzel', serif;
-    font-size: 9px;
+    font-size: 8.5px;
     letter-spacing: 1.5px;
-    padding: 2px 8px;
+    padding: 2px 7px;
     border-radius: 2px;
     text-transform: uppercase;
-    margin-right: 5px;
-    margin-bottom: 5px;
+    margin-right: 4px;
   }
   .tag-gracia { background: rgba(201,168,76,0.12); color: var(--gold); }
   .tag-cruz { background: rgba(139,48,48,0.2); color: #e08080; }
   .tag-dios { background: rgba(60,80,120,0.2); color: #8aacdd; }
   .tag-gloria { background: rgba(70,120,80,0.2); color: #7dbf88; }
-
-  .song-links {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    align-items: flex-end;
-    flex-shrink: 0;
-    padding-top: 2px;
+  .song-note {
+    font-size: 13px;
+    color: var(--cream-dim);
+    line-height: 1.5;
+    margin-bottom: 10px;
   }
-  .link-btn {
+
+  /* AUDIO LINKS ROW */
+  .audio-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .alink {
     display: inline-flex;
     align-items: center;
     gap: 5px;
     font-family: 'Cinzel', serif;
-    font-size: 9px;
+    font-size: 8.5px;
     letter-spacing: 1px;
-    color: var(--gold-dim);
-    text-decoration: none;
-    padding: 4px 10px;
-    border: 1px solid rgba(201,168,76,0.15);
-    border-radius: 2px;
-    white-space: nowrap;
-    transition: all 0.15s ease;
     text-transform: uppercase;
+    text-decoration: none;
+    padding: 4px 9px;
+    border-radius: 2px;
+    border: 1px solid;
+    transition: opacity 0.15s, filter 0.15s;
+    font-weight: 600;
   }
-  .link-btn:hover {
+  .alink:hover { opacity: 0.8; filter: brightness(1.15); }
+
+  .alink-yt {
+    color: #ff6060;
+    border-color: rgba(200,60,60,0.3);
+    background: rgba(200,60,60,0.08);
+  }
+  .alink-sp {
+    color: #1db954;
+    border-color: rgba(29,185,84,0.3);
+    background: rgba(29,185,84,0.08);
+  }
+  .alink-mp3 {
     color: var(--gold);
-    border-color: rgba(201,168,76,0.4);
+    border-color: rgba(201,168,76,0.3);
     background: rgba(201,168,76,0.06);
   }
-  .link-btn svg {
-    width: 9px; height: 9px;
-    fill: currentColor;
+  .alink-letra {
+    color: #7a9fd0;
+    border-color: rgba(90,130,190,0.25);
+    background: rgba(90,130,190,0.06);
   }
 
-  /* FILTER LEGEND */
-  .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-bottom: 40px;
-    padding: 16px 20px;
+  /* Icons SVG inline */
+  .ico { width: 9px; height: 9px; fill: currentColor; flex-shrink: 0; }
+
+  /* RESOURCES */
+  .resources-box {
+    background: var(--bg3);
     border: 1px solid var(--border);
+    padding: 24px 28px;
     border-radius: 3px;
+    margin-top: 48px;
   }
-  .legend-item {
-    display: flex;
+  .resources-box h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .resource-row {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 8px 14px;
     align-items: center;
-    gap: 8px;
-    font-size: 12px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(201,168,76,0.08);
+  }
+  .resource-row:last-child { border-bottom: none; }
+  .res-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 15px;
+    color: var(--white);
+    font-weight: 600;
+  }
+  .res-desc {
+    font-size: 13px;
     color: var(--cream-dim);
+    font-style: italic;
   }
 
   /* FOOTER */
   .footer {
-    margin-top: 64px;
-    padding-top: 28px;
+    margin-top: 56px;
+    padding-top: 24px;
     border-top: 1px solid var(--border);
     text-align: center;
   }
-  .footer p {
-    font-size: 13px;
-    color: var(--cream-dim);
-    margin-bottom: 6px;
-    font-style: italic;
-  }
-  .footer strong {
-    color: var(--gold);
-    font-style: normal;
-  }
+  .footer p { font-size: 13px; color: var(--cream-dim); margin-bottom: 5px; font-style: italic; }
+  .footer strong { color: var(--gold); font-style: normal; }
 
-  /* Count badge */
-  .count-badge {
-    display: inline-block;
-    background: var(--gold);
-    color: var(--bg);
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    font-weight: 600;
-    padding: 2px 8px;
-    border-radius: 2px;
-    letter-spacing: 1px;
-    vertical-align: middle;
-    margin-left: 8px;
-  }
-
-  @media (max-width: 600px) {
-    .song-card {
-      grid-template-columns: 32px 1fr;
-    }
-    .song-links {
-      grid-column: 2;
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
-      margin-top: 8px;
-    }
+  @media (max-width: 580px) {
+    .song-top { flex-direction: column; }
+    .audio-links { margin-top: 6px; }
   }
 </style>
 </head>
@@ -347,34 +381,34 @@
 
   <!-- HEADER -->
   <header class="header">
-    <span class="subtitle-top">Repertorio Teológico · Adoración Congregacional</span>
+    <span class="subtitle-top">Repertorio Teológico · Adoración Congregacional · Con Audio</span>
     <h1 class="main-title">50 Cantos Congregacionales<br>sobre la <em>Gracia</em></h1>
     <p class="header-desc">
-      Curados y filtrados teológicamente para que cada canción exalte a Dios —
-      su carácter, sus obras y su gloria — sin colocar al ser humano en el centro.
+      Curados y filtrados teológicamente. Cada canción exalta a Dios — su carácter, sus obras y su gloria.
+      Con hipervínculos directos para escuchar en YouTube, Spotify y descargar la letra.
     </p>
   </header>
 
-  <!-- CRITERIA -->
-  <div class="criteria">
-    <h3>Criterios de Filtrado Teológico</h3>
-    <ul>
-      <li>La letra proclama atributos o acciones de Dios</li>
-      <li>La gracia se presenta como iniciativa divina, no mérito humano</li>
-      <li>El sujeto activo principal es Dios, Cristo o el Espíritu</li>
-      <li>No reduce la salvación a experiencia emocional subjetiva</li>
-      <li>Cantos que la congregación puede cantar juntos con claridad</li>
-      <li>Teológicamente sanos: sustitución, justificación, expiación</li>
-    </ul>
+  <!-- AUDIO LEGEND -->
+  <div class="audio-legend">
+    <span class="audio-legend-title">Iconos de Audio</span>
+    <span class="al-item"><span class="al-dot dot-yt"></span> YouTube — Video oficial o interpretación</span>
+    <span class="al-item"><span class="al-dot dot-sp"></span> Spotify — Escuchar streaming</span>
+    <span class="al-item"><span class="al-dot dot-mp3"></span> MP3/Melodía — Descarga gratuita</span>
+    <span class="al-item"><span class="al-dot dot-letra"></span> Letra — Texto completo oficial</span>
   </div>
 
-  <!-- LEGEND -->
-  <div class="legend">
-    <span style="font-family:'Cinzel',serif;font-size:10px;color:var(--gold-dim);letter-spacing:2px;text-transform:uppercase;margin-right:8px;">Énfasis:</span>
-    <span class="legend-item"><span class="tag tag-gracia">Gracia</span> Gracia soberana de Dios</span>
-    <span class="legend-item"><span class="tag tag-cruz">Cruz</span> Expiación y sacrificio</span>
-    <span class="legend-item"><span class="tag tag-dios">Dios</span> Atributos divinos</span>
-    <span class="legend-item"><span class="tag tag-gloria">Gloria</span> Gloria y majestad</span>
+  <!-- CRITERIA -->
+  <div class="criteria">
+    <h3>Filtro Teológico Aplicado</h3>
+    <ul>
+      <li>La letra proclama atributos o acciones de Dios</li>
+      <li>La gracia es iniciativa divina, no mérito humano</li>
+      <li>El sujeto activo principal es Dios, Cristo o el Espíritu</li>
+      <li>No reduce la salvación a experiencia emocional subjetiva</li>
+      <li>Accesible y cantable congregacionalmente</li>
+      <li>Teología sana: sustitución, justificación, expiación</li>
+    </ul>
   </div>
 
   <!-- SECCIÓN 1 -->
@@ -383,455 +417,511 @@
       <span class="section-number">Sección I</span>
       <div>
         <div class="section-title">Gracia Soberana Música <span class="count-badge">30</span></div>
-        <div class="section-desc">Contemporáneas · Fundamentadas en la Biblia · Accesibles congregacionalmente</div>
+        <div class="section-desc">Canal oficial YouTube: youtube.com/@graciasoberanamusica · Spotify: open.spotify.com/artist/3yZLchlyOSmGC6B6bUhgVU</div>
       </div>
     </div>
-
     <div class="songs-grid">
 
-      <!-- 1 -->
-      <div class="song-card">
-        <span class="song-num">01</span>
-        <div class="song-body">
-          <div class="song-title">Gracias, Cristo</div>
-          <div class="song-author">Sovereign Grace Music / Pat Sczebel</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Centra cada estrofa en la acción expiatoria de Cristo: su sacrificio, su sangre, la ira de Dios satisfecha. El ser humano es objeto de la gracia, no su protagonista.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/gracias-cristo/" target="_blank">Letra oficial</a>
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/gracias-cristo/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://www.letras.com/sovereign-grace-music/gracias-cristo/" target="_blank">Letras.com</a>
-        </div>
-      </div>
+<!-- SVG icons shortcuts (embedded once, referenced via use) -->
+<!-- YT icon path, SP icon path, etc. will be inlined per link -->
 
-      <!-- 2 -->
-      <div class="song-card">
-        <span class="song-num">02</span>
-        <div class="song-body">
-          <div class="song-title">Ante el Trono Celestial</div>
-          <div class="song-author">Charitie Lees Bancroft / Vikki Cook · GSM</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Proclama la intercesión de Cristo como Sumo Sacerdote. El fundamento es su justicia, no la nuestra. Excelente para contemplar la justificación.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/ante-el-trono-celestial/" target="_blank">Letra oficial</a>
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/ante-el-trono-celestial/" target="_blank">SGM</a>
-        </div>
+<!-- 01 -->
+<div class="song-card">
+  <span class="song-num">01</span>
+  <div class="song-body">
+    <div class="song-top">
+      <div class="song-info">
+        <div class="song-title">Gracias, Cristo</div>
+        <div class="song-author">Sovereign Grace Music / Pat Sczebel (2012)</div>
       </div>
+    </div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Centra cada estrofa en la acción expiatoria de Cristo: su sangre, la ira de Dios satisfecha. El creyente es objeto de la gracia, no su protagonista.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Gracias+Cristo+Gracia+Soberana+Musica+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/track/4xZwvvAj1XMju41UzWNS40" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/gracias-cristo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 3 -->
-      <div class="song-card">
-        <span class="song-num">03</span>
-        <div class="song-body">
-          <div class="song-title">Glorioso Intercambio</div>
-          <div class="song-author">Federico Álvarez, Jonathan Jerez, José R. Peña · GSM</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Celebra la doctrina de la imputación: Cristo cargó nuestra maldad y nos otorgó su rectitud. Cada verso interroga y responde con asombro ante la obra divina.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/glorioso-intercambio/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/glorioso-intercambio/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 02 -->
+<div class="song-card">
+  <span class="song-num">02</span>
+  <div class="song-body">
+    <div class="song-title">Ante el Trono Celestial</div>
+    <div class="song-author">Charitie Lees Bancroft / Vikki Cook · GSM</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Proclama la intercesión de Cristo como Sumo Sacerdote. El fundamento es su justicia, no la nuestra.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Ante+el+Trono+Celestial+Gracia+Soberana+Musica" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Ante%20el%20Trono%20Celestial%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/ante-el-trono-celestial/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 4 -->
-      <div class="song-card">
-        <span class="song-num">04</span>
-        <div class="song-body">
-          <div class="song-title">La Gloria de la Cruz</div>
-          <div class="song-author">Sovereign Grace Music · Carlos Arzola</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Proclama la cruz como el mayor acto de gloria divina. No habla de bendiciones personales sino de la obra objetiva de Dios en la historia de la redención.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/la-gloria-de-la-cruz/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/la-gloria-de-la-cruz/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 03 -->
+<div class="song-card">
+  <span class="song-num">03</span>
+  <div class="song-body">
+    <div class="song-title">Glorioso Intercambio</div>
+    <div class="song-author">Federico Álvarez, Jonathan Jerez, José R. Peña · GSM</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Celebra la imputación: Cristo cargó nuestra maldad y nos otorgó su rectitud. Cada verso es asombro ante la obra divina.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Glorioso+Intercambio+Gracia+Soberana+Musica+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Glorioso%20Intercambio%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://sovereigngracemusic.com/music/songs/glorioso-intercambio/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 5 -->
-      <div class="song-card">
-        <span class="song-num">05</span>
-        <div class="song-body">
-          <div class="song-title">Hay Libertad</div>
-          <div class="song-author">Gracia Soberana Música / Adoración La IBI</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Anuncia la libertad como obra de Cristo en la cruz: las cadenas rotas, la condenación quitada, el pecado vencido. El sujeto activo es Dios en Cristo.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/hay-libertad/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/hay-libertad/" target="_blank">HdG</a>
-          <a class="link-btn" href="https://www.letras.com/gracia-soberana-musica/hay-libertad/" target="_blank">Letras</a>
-        </div>
-      </div>
+<!-- 04 -->
+<div class="song-card">
+  <span class="song-num">04</span>
+  <div class="song-body">
+    <div class="song-title">La Gloria de la Cruz</div>
+    <div class="song-author">Sovereign Grace Music · Carlos Arzola</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Proclama la cruz como el mayor acto de gloria divina. No habla de bendiciones personales sino de la obra objetiva de Dios en la redención.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=La+Gloria+de+la+Cruz+Gracia+Soberana+Musica" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/La%20Gloria%20de%20la%20Cruz%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/la-gloria-de-la-cruz/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 6 -->
-      <div class="song-card">
-        <span class="song-num">06</span>
-        <div class="song-body">
-          <div class="song-title">El Dios Que Adoramos</div>
-          <div class="song-author">Gracia Soberana Música / Adoración La IBI</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Catálogo de atributos divinos cantado congregacionalmente: su poder, su amor eterno, su soberanía. Puramente teocéntrico sin referencia al mérito humano.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/el-dios-que-adoramos/" target="_blank">SGM</a>
-        </div>
-      </div>
+<!-- 05 -->
+<div class="song-card">
+  <span class="song-num">05</span>
+  <div class="song-body">
+    <div class="song-title">Hay Libertad</div>
+    <div class="song-author">Gracia Soberana Música / Adoración La IBI</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Las cadenas rotas, la condenación quitada, el pecado vencido — todo por Cristo. El sujeto activo es Dios en Cristo.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Hay+Libertad+Gracia+Soberana+Musica+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Hay%20Libertad%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/hay-libertad/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 7 -->
-      <div class="song-card">
-        <span class="song-num">07</span>
-        <div class="song-body">
-          <div class="song-title">Contempla a Dios</div>
-          <div class="song-author">Gracia Soberana Música / Adoración La IBI</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Invita a la congregación a fijar la mirada en Dios mismo: su grandeza, su eternidad, su gracia. La respuesta del creyente nace del carácter divino, no al revés.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/contempla-a-dios/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/contempla-a-dios/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 06 -->
+<div class="song-card">
+  <span class="song-num">06</span>
+  <div class="song-body">
+    <div class="song-title">El Dios Que Adoramos</div>
+    <div class="song-author">Gracia Soberana Música / Adoración La IBI</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Catálogo de atributos divinos cantado congregacionalmente: poder, amor eterno, soberanía. Puramente teocéntrico.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=El+Dios+que+Adoramos+Gracia+Soberana+Musica+La+IBI" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/El%20Dios%20que%20Adoramos%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://sovereigngracemusic.com/music/songs/el-dios-que-adoramos/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 8 -->
-      <div class="song-card">
-        <span class="song-num">08</span>
-        <div class="song-body">
-          <div class="song-title">El Poder de la Cruz</div>
-          <div class="song-author">Keith & Kristyn Getty · trad. GSM</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Poema narrativo de la Pasión que declara cada sufrimiento de Cristo como acto de amor y justicia divina. Una de las canciones congregacionales más teológicamente ricas del siglo XXI.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/el-poder-de-la-cruz/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/el-poder-de-la-cruz/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 07 -->
+<div class="song-card">
+  <span class="song-num">07</span>
+  <div class="song-body">
+    <div class="song-title">Contempla a Dios</div>
+    <div class="song-author">Gracia Soberana Música / Adoración La IBI</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">La congregación fija la mirada en Dios mismo: grandeza, eternidad, gracia. La respuesta del creyente nace del carácter divino.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Contempla+a+Dios+Gracia+Soberana+Musica+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Contempla%20a%20Dios%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/contempla-a-dios/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 9 -->
-      <div class="song-card">
-        <span class="song-num">09</span>
-        <div class="song-body">
-          <div class="song-title">Fue Tu Gracia</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Atribuye toda la salvación a la iniciativa gratuita de Dios. "Fue tu gracia" es la declaración central: no fue el esfuerzo o la decisión humana, sino el don divino.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/fue-tu-gracia/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/fue-tu-gracia/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 08 -->
+<div class="song-card">
+  <span class="song-num">08</span>
+  <div class="song-body">
+    <div class="song-title">El Poder de la Cruz</div>
+    <div class="song-author">Keith & Kristyn Getty · trad. GSM</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Poema narrativo de la Pasión. Cada sufrimiento de Cristo declarado como acto de amor y justicia divina. Una de las más teológicamente ricas del siglo XXI.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=El+Poder+de+la+Cruz+Keith+Getty+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/El%20Poder%20de%20la%20Cruz%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/el-poder-de-la-cruz/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 10 -->
-      <div class="song-card">
-        <span class="song-num">10</span>
-        <div class="song-body">
-          <div class="song-title">Glorioso Cristo</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Himno de aclamación cristológica. Presenta a Cristo en su preexistencia, encarnación, muerte, resurrección y reinado. El corazón del canto es quién es Él, no qué hace por mí.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/glorioso-cristo/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/glorioso-cristo/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 09 -->
+<div class="song-card">
+  <span class="song-num">09</span>
+  <div class="song-body">
+    <div class="song-title">Fue Tu Gracia</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Atribuye toda la salvación a la iniciativa gratuita de Dios. "Fue tu gracia" — no el esfuerzo o la decisión humana, sino el don divino.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Fue+Tu+Gracia+Gracia+Soberana+Musica" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Fue%20Tu%20Gracia%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/fue-tu-gracia/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 11 -->
-      <div class="song-card">
-        <span class="song-num">11</span>
-        <div class="song-body">
-          <div class="song-title">El Amor de Cristo</div>
-          <div class="song-author">Sovereign Grace Music / Adoración La IBI</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Proclama el amor de Cristo como más alto, más ancho, más profundo que todo. Cada estrofa describe el amor divino en términos que superan el entendimiento humano (Ef. 3:18).</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/el-amor-de-cristo/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/el-amor-de-cristo/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 10 -->
+<div class="song-card">
+  <span class="song-num">10</span>
+  <div class="song-body">
+    <div class="song-title">Glorioso Cristo</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Himno de aclamación cristológica: preexistencia, encarnación, muerte, resurrección y reinado de Cristo. El corazón del canto es quién es Él.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Glorioso+Cristo+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Glorioso%20Cristo%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/glorioso-cristo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 12 -->
-      <div class="song-card">
-        <span class="song-num">12</span>
-        <div class="song-body">
-          <div class="song-title">Nombre Sobre Todo</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Basada en Filipenses 2: el nombre de Jesús exaltado sobre toda autoridad. La congregación declara la supremacía de Cristo sin referencia a beneficios personales.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/nombre-sobre-todo/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/nombre-sobre-todo/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 11 -->
+<div class="song-card">
+  <span class="song-num">11</span>
+  <div class="song-body">
+    <div class="song-title">El Amor de Cristo</div>
+    <div class="song-author">Sovereign Grace Music / Adoración La IBI</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Proclama el amor de Cristo como más alto, más ancho, más profundo que todo (Ef. 3:18). Cada estrofa describe el amor divino en términos que superan el entendimiento humano.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=El+Amor+de+Cristo+Gracia+Soberana+La+IBI" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/El%20Amor%20de%20Cristo%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/el-amor-de-cristo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 13 -->
-      <div class="song-card">
-        <span class="song-num">13</span>
-        <div class="song-body">
-          <div class="song-title">Oh Gran Dios</div>
-          <div class="song-author">Bob Kauflin · Sovereign Grace Music</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Traducción de "O Great God". Eleva a Dios en su omnipotencia, su santidad, su soberanía. Una de las canciones más francamente teocéntricas del repertorio contemporáneo.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/oh-gran-dios/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/oh-gran-dios/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 12 -->
+<div class="song-card">
+  <span class="song-num">12</span>
+  <div class="song-body">
+    <div class="song-title">Nombre Sobre Todo</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Basada en Filipenses 2: el nombre de Jesús exaltado sobre toda autoridad. La congregación declara la supremacía de Cristo sin referencia a beneficios personales.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Nombre+Sobre+Todo+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Nombre%20Sobre%20Todo%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/nombre-sobre-todo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 14 -->
-      <div class="song-card">
-        <span class="song-num">14</span>
-        <div class="song-body">
-          <div class="song-title">Me Glorío en Jesucristo</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Basada en Gálatas 6:14. El creyente se gloría exclusivamente en la cruz de Cristo, renunciando a todo mérito propio. Contrario al antropocentrismo por su esencia misma.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/me-glorio-en-jesucristo/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/me-glorio-en-jesucristo/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 13 -->
+<div class="song-card">
+  <span class="song-num">13</span>
+  <div class="song-body">
+    <div class="song-title">Oh Gran Dios</div>
+    <div class="song-author">Bob Kauflin · Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Eleva a Dios en su omnipotencia, santidad y soberanía. Una de las canciones más francamente teocéntricas del repertorio contemporáneo.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Oh+Gran+Dios+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Oh%20Gran%20Dios%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/oh-gran-dios/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 15 -->
-      <div class="song-card">
-        <span class="song-num">15</span>
-        <div class="song-body">
-          <div class="song-title">Muestra a Cristo</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Petición para que Dios revele a Cristo. La iglesia pide que la gloria de Cristo sea visible: no busca experiencias sino al Señor mismo. Profundamente teocéntrica en su orientación.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/muestra-a-cristo/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/muestra-a-cristo/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 14 -->
+<div class="song-card">
+  <span class="song-num">14</span>
+  <div class="song-body">
+    <div class="song-title">Me Glorío en Jesucristo</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Basada en Gálatas 6:14. El creyente se gloría exclusivamente en la cruz de Cristo, renunciando a todo mérito propio. Contrario al antropocentrismo por su esencia.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Me+Glorío+en+Jesucristo+Sovereign+Grace+Music" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Me%20Glor%C3%ADo%20en%20Jesucristo%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/me-glorio-en-jesucristo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 16 -->
-      <div class="song-card">
-        <span class="song-num">16</span>
-        <div class="song-body">
-          <div class="song-title">Es Nuestro Dios</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Himno de identidad: "este es nuestro Dios". Declara los atributos y obras de Dios en forma directa. La congregación proclama, no solo siente; anuncia, no solo experimenta.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/es-nuestro-dios/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/es-nuestro-dios/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 15 -->
+<div class="song-card">
+  <span class="song-num">15</span>
+  <div class="song-body">
+    <div class="song-title">Muestra a Cristo</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Petición para que Dios revele a Cristo. La iglesia pide ver la gloria de Cristo — no experiencias sino al Señor mismo. Profundamente teocéntrica en su orientación.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Muestra+a+Cristo+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Muestra%20a%20Cristo%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/muestra-a-cristo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 17 -->
-      <div class="song-card">
-        <span class="song-num">17</span>
-        <div class="song-body">
-          <div class="song-title">La Salvación es del Señor</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Jonás 2:9 cantado. La salvación pertenece a Dios, es obra suya de principio a fin. La declaración misma del título elimina cualquier mérito o protagonismo humano.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/la-salvacion-es-del-senor/" target="_blank">SGM</a>
-        </div>
-      </div>
+<!-- 16 -->
+<div class="song-card">
+  <span class="song-num">16</span>
+  <div class="song-body">
+    <div class="song-title">Es Nuestro Dios</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Himno de identidad: "este es nuestro Dios". Declara los atributos y obras de Dios en forma directa. La congregación proclama, no solo siente; anuncia, no solo experimenta.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Es+Nuestro+Dios+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Es%20Nuestro%20Dios%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/es-nuestro-dios/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 18 -->
-      <div class="song-card">
-        <span class="song-num">18</span>
-        <div class="song-body">
-          <div class="song-title">Tú Nunca Cambias</div>
-          <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Proclama la inmutabilidad de Dios. Su amor, su fidelidad y su gracia son eternos e inalterables. El fundamento es el carácter divino, no las circunstancias del creyente.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/tu-nunca-cambias/" target="_blank">GSM</a>
-          <a class="link-btn" href="https://sovereigngracemusic.bandcamp.com/album/conocer-a-dios" target="_blank">Album</a>
-        </div>
-      </div>
+<!-- 17 -->
+<div class="song-card">
+  <span class="song-num">17</span>
+  <div class="song-body">
+    <div class="song-title">La Salvación es del Señor</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Jonás 2:9 cantado. La salvación pertenece a Dios, es obra suya de principio a fin. El título mismo elimina todo mérito o protagonismo humano.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=La+Salvación+es+del+Señor+Sovereign+Grace+Music" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/La%20Salvaci%C3%B3n%20es%20del%20Se%C3%B1or%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://sovereigngracemusic.com/music/songs/la-salvacion-es-del-senor/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 19 -->
-      <div class="song-card">
-        <span class="song-num">19</span>
-        <div class="song-body">
-          <div class="song-title">Todo Por Tu Gloria</div>
-          <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">La gloria de Dios como motivación suprema de la iglesia. Cada acción, cada canto, cada oración orientada no al beneficio propio sino a la gloria del Creador. Plenamente teocéntrico.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/todo-por-tu-gloria/" target="_blank">GSM</a>
-        </div>
-      </div>
+<!-- 18 -->
+<div class="song-card">
+  <span class="song-num">18</span>
+  <div class="song-body">
+    <div class="song-title">Tú Nunca Cambias</div>
+    <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Proclama la inmutabilidad de Dios. Su amor, su fidelidad y su gracia son eternos e inalterables. El fundamento es el carácter divino, no las circunstancias del creyente.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Tú+Nunca+Cambias+Gracia+Soberana+Musica+2024" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/T%C3%BA%20Nunca%20Cambias%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/tu-nunca-cambias/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 20 -->
-      <div class="song-card">
-        <span class="song-num">20</span>
-        <div class="song-body">
-          <div class="song-title">Cristo Mi Sabiduría</div>
-          <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Basada en 1 Corintios 1:30: Cristo como nuestra justicia, santificación y redención. Proclama que todo lo que somos delante de Dios es por Cristo, no por nosotros.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/cristo-mi-sabiduria/" target="_blank">GSM</a>
-        </div>
-      </div>
+<!-- 19 -->
+<div class="song-card">
+  <span class="song-num">19</span>
+  <div class="song-body">
+    <div class="song-title">Todo Por Tu Gloria</div>
+    <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">La gloria de Dios como motivación suprema de la iglesia. Cada acción y canto orientada no al beneficio propio sino a la gloria del Creador.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Todo+Por+Tu+Gloria+Gracia+Soberana+Musica+2024" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Todo%20Por%20Tu%20Gloria%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/todo-por-tu-gloria/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 21 -->
-      <div class="song-card">
-        <span class="song-num">21</span>
-        <div class="song-body">
-          <div class="song-title">Consumado Es</div>
-          <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Las últimas palabras de Cristo en la cruz como himno de victoria. La obra de redención está completa —no hay nada que el creyente deba añadir. Teológicamente decisivo.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/consumado-es/" target="_blank">GSM</a>
-          <a class="link-btn" href="https://sovereigngracemusic.bandcamp.com/album/conocer-a-dios" target="_blank">Album</a>
-        </div>
-      </div>
+<!-- 20 -->
+<div class="song-card">
+  <span class="song-num">20</span>
+  <div class="song-body">
+    <div class="song-title">Cristo Mi Sabiduría</div>
+    <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Basada en 1 Corintios 1:30: Cristo como nuestra justicia, santificación y redención. Todo lo que somos delante de Dios es por Cristo, no por nosotros.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Cristo+Mi+Sabiduría+Gracia+Soberana+Musica" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Cristo%20Mi%20Sabidur%C3%ADa%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/cristo-mi-sabiduria/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 22 -->
-      <div class="song-card">
-        <span class="song-num">22</span>
-        <div class="song-body">
-          <div class="song-title">Jesús, Nuestro Juez y Rescate</div>
-          <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
-          <div class="song-note">Celebra a Cristo como el único que puede ser a la vez Juez justo y Rescatador misericordioso. Explora la justificación desde la perspectiva judicial y redentora de Dios.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/jesus-nuestro-juez-y-rescate/" target="_blank">GSM</a>
-        </div>
-      </div>
+<!-- 21 -->
+<div class="song-card">
+  <span class="song-num">21</span>
+  <div class="song-body">
+    <div class="song-title">Consumado Es</div>
+    <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Las últimas palabras de Cristo como himno de victoria. La obra de redención está completa — no hay nada que el creyente deba añadir. Teológicamente decisivo.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Consumado+Es+Gracia+Soberana+Musica+2024" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Consumado%20Es%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/consumado-es/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 23 -->
-      <div class="song-card">
-        <span class="song-num">23</span>
-        <div class="song-body">
-          <div class="song-title">Canta</div>
-          <div class="song-author">Nathan Stiff, David Zimmer · Gracia Soberana Música (2024)</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Convoca a toda la creación al canto porque Dios es digno. Las razones del canto son siempre atributos o acciones divinas: el aliento dado, el pecado perdonado, la gloria venidera.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/canta/" target="_blank">GSM</a>
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/canta/" target="_blank">SGM</a>
-        </div>
-      </div>
+<!-- 22 -->
+<div class="song-card">
+  <span class="song-num">22</span>
+  <div class="song-body">
+    <div class="song-title">Jesús, Nuestro Juez y Rescate</div>
+    <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
+    <div class="song-note">Celebra a Cristo como el único que puede ser a la vez Juez justo y Rescatador misericordioso. Explora la justificación desde la perspectiva judicial y redentora de Dios.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Jesús+Nuestro+Juez+y+Rescate+Gracia+Soberana+Musica" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Jes%C3%BAs%20Nuestro%20Juez%20y%20Rescate%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/jesus-nuestro-juez-y-rescate/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 24 -->
-      <div class="song-card">
-        <span class="song-num">24</span>
-        <div class="song-body">
-          <div class="song-title">Somos Siempre Tuyos</div>
-          <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Declara que el pueblo de Dios le pertenece eternamente —no por decisión propia sino por su elección y redención. La seguridad descansa en el carácter de Dios, no en la fidelidad humana.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/somos-siempre-tuyos/" target="_blank">GSM</a>
-        </div>
-      </div>
+<!-- 23 -->
+<div class="song-card">
+  <span class="song-num">23</span>
+  <div class="song-body">
+    <div class="song-title">Canta</div>
+    <div class="song-author">Nathan Stiff, David Zimmer · Gracia Soberana Música (2024)</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Convoca a toda la creación al canto porque Dios es digno. Las razones del canto son siempre atributos o acciones divinas: el aliento dado, el pecado perdonado, la gloria venidera.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Canta+Gracia+Soberana+Musica+2024+Nathan+Stiff" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Canta%20Gracia%20Soberana%20M%C3%BAsica%202024" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/canta/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 25 -->
-      <div class="song-card">
-        <span class="song-num">25</span>
-        <div class="song-body">
-          <div class="song-title">Corre a Cristo</div>
-          <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
-          <div class="song-note">Invita a volver a Cristo como fuente de toda gracia. Cada razón para correr a Él es un atributo suyo: su suficiencia, su misericordia, su obra completa en la cruz.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciasoberanamusica.com/musica/canciones/corre-a-cristo/" target="_blank">GSM</a>
-        </div>
-      </div>
+<!-- 24 -->
+<div class="song-card">
+  <span class="song-num">24</span>
+  <div class="song-body">
+    <div class="song-title">Somos Siempre Tuyos</div>
+    <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">El pueblo de Dios le pertenece eternamente — no por decisión propia sino por su elección y redención. La seguridad descansa en el carácter de Dios, no en la fidelidad humana.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Somos+Siempre+Tuyos+Gracia+Soberana+Musica" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Somos%20Siempre%20Tuyos%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/somos-siempre-tuyos/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 26 -->
-      <div class="song-card">
-        <span class="song-num">26</span>
-        <div class="song-body">
-          <div class="song-title">Cuán Grande Amor</div>
-          <div class="song-author">Sovereign Grace Music</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Proclama la magnitud del amor divino usando el lenguaje de las dimensiones de Efesios 3. Cada estrofa añade dimensión a la descripción del carácter amoroso de Dios.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/cuan-grande-amor/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/cuan-grande-amor/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 25 -->
+<div class="song-card">
+  <span class="song-num">25</span>
+  <div class="song-body">
+    <div class="song-title">Corre a Cristo</div>
+    <div class="song-author">Gracia Soberana Música · Álbum Conocer a Dios (2024)</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
+    <div class="song-note">Invita a volver a Cristo como fuente de toda gracia. Cada razón para correr a Él es un atributo suyo: suficiencia, misericordia, obra completa en la cruz.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Corre+a+Cristo+Gracia+Soberana+Musica+2024" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Corre%20a%20Cristo%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciasoberanamusica.com/musica/canciones/corre-a-cristo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 27 -->
-      <div class="song-card">
-        <span class="song-num">27</span>
-        <div class="song-body">
-          <div class="song-title">Sea La Gloria Solo a Ti</div>
-          <div class="song-author">Sovereign Grace Music · Álbum Sea La Gloria Solo a Ti</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">El soli Deo gloria cantado. La letra explícitamente rechaza cualquier gloria compartida y la atribuye solo a Dios. Himno de reforma congregacional.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/sea-la-gloria-solo-a-ti/" target="_blank">SGM</a>
-        </div>
-      </div>
+<!-- 26 -->
+<div class="song-card">
+  <span class="song-num">26</span>
+  <div class="song-body">
+    <div class="song-title">Cuán Grande Amor</div>
+    <div class="song-author">Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Proclama la magnitud del amor divino usando el lenguaje de Efesios 3. Cada estrofa añade dimensión a la descripción del carácter amoroso de Dios.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Cuán+Grande+Amor+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Cu%C3%A1n%20Grande%20Amor%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/cuan-grande-amor/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 28 -->
-      <div class="song-card">
-        <span class="song-num">28</span>
-        <div class="song-body">
-          <div class="song-title">Cuán Profundo Amor</div>
-          <div class="song-author">Stuart Townend · trad. Sovereign Grace Music</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-cruz">Cruz</span></div>
-          <div class="song-note">El amor del Padre manifestado en la entrega del Hijo. La canción describe la profundidad de ese amor: costoso, activo, sacrificial. Sin sentimentalismo vacío.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/cuan-profundo-amor/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/cuan-profundo-amor/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 27 -->
+<div class="song-card">
+  <span class="song-num">27</span>
+  <div class="song-body">
+    <div class="song-title">Sea La Gloria Solo a Ti</div>
+    <div class="song-author">Sovereign Grace Music · Álbum Sea La Gloria Solo a Ti</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">El Soli Deo Gloria cantado. La letra atribuye toda la gloria solo a Dios. Himno de reforma congregacional por excelencia.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Sea+La+Gloria+Solo+a+Ti+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Sea%20La%20Gloria%20Solo%20a%20Ti%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://sovereigngracemusic.com/music/songs/sea-la-gloria-solo-a-ti/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 29 -->
-      <div class="song-card">
-        <span class="song-num">29</span>
-        <div class="song-body">
-          <div class="song-title">No Valgo Por Mi Posesión</div>
-          <div class="song-author">Robert Lowry · trad. Sovereign Grace Music</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
-          <div class="song-note">"Nothing But the Blood" en español. La sangre de Cristo es el único fundamento de la justificación —sin ningún mérito del creyente. Radical en su cristocentrismo.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/no-valgo-por-mi-posesion/" target="_blank">HdG</a>
-        </div>
-      </div>
+<!-- 28 -->
+<div class="song-card">
+  <span class="song-num">28</span>
+  <div class="song-body">
+    <div class="song-title">Cuán Profundo Amor</div>
+    <div class="song-author">Stuart Townend · trad. Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-cruz">Cruz</span></div>
+    <div class="song-note">El amor del Padre manifestado en la entrega del Hijo. Costoso, activo, sacrificial. Sin sentimentalismo vacío: amor que actúa y salva.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Cuán+Profundo+Amor+Stuart+Townend+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Cu%C3%A1n%20Profundo%20Amor%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/cuan-profundo-amor/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-      <!-- 30 -->
-      <div class="song-card">
-        <span class="song-num">30</span>
-        <div class="song-body">
-          <div class="song-title">Al Pie de La Cruz</div>
-          <div class="song-author">Sovereign Grace Music · Álbum Sea La Gloria Solo a Ti</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">La cruz como único lugar donde el pecador puede estar. Cada estrofa describe lo que Cristo hizo allí —no lo que sentimos, sino lo que Él consumó objetivamente.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/al-pie-de-la-cruz/" target="_blank">SGM</a>
-        </div>
-      </div>
+<!-- 29 -->
+<div class="song-card">
+  <span class="song-num">29</span>
+  <div class="song-body">
+    <div class="song-title">No Valgo Por Mi Posesión</div>
+    <div class="song-author">Robert Lowry · trad. Sovereign Grace Music</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
+    <div class="song-note">"Nothing But the Blood" en español. La sangre de Cristo es el único fundamento de la justificación — sin ningún mérito del creyente. Radical en su cristocentrismo.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=No+Valgo+Por+Mi+Posesión+Sovereign+Grace+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/No%20Valgo%20Por%20Mi%20Posesi%C3%B3n%20Gracia%20Soberana" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/no-valgo-por-mi-posesion/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
 
-    </div><!-- end songs-grid section 1 -->
+<!-- 30 -->
+<div class="song-card">
+  <span class="song-num">30</span>
+  <div class="song-body">
+    <div class="song-title">Al Pie de La Cruz</div>
+    <div class="song-author">Sovereign Grace Music · Álbum Sea La Gloria Solo a Ti</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">La cruz como único lugar donde el pecador puede estar. Cada estrofa describe lo que Cristo hizo allí — no lo que sentimos, sino lo que Él consumó objetivamente.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Al+Pie+de+la+Cruz+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Al%20Pie%20de%20La%20Cruz%20Gracia%20Soberana%20M%C3%BAsica" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://sovereigngracemusic.com/music/songs/al-pie-de-la-cruz/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+    </div><!-- end songs section 1 -->
   </section>
 
   <!-- SECCIÓN 2 -->
@@ -839,315 +929,397 @@
     <div class="section-header">
       <span class="section-number">Sección II</span>
       <div>
-        <div class="section-title">Himnos de Gracia — Clásicos y Tradicionales <span class="count-badge">20</span></div>
-        <div class="section-desc">Himnario Himnos de Gracia · Himnos reformados · Teología cantada a través de los siglos</div>
+        <div class="section-title">Himnos Clásicos y Reformados <span class="count-badge">20</span></div>
+        <div class="section-desc">Himnos de Gracia · Tradición reformada · Teología cantada a través de los siglos · MP3 gratuito en himnosdegracia.com/melodias-mp3</div>
       </div>
     </div>
-
     <div class="songs-grid">
 
-      <!-- 31 -->
-      <div class="song-card">
-        <span class="song-num">31</span>
-        <div class="song-body">
-          <div class="song-title">Gracia Admirable</div>
-          <div class="song-author">John Newton (1779) · Amazing Grace en español</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">El himno emblemático de la gracia soberana. Newton celebra que fue Dios quien buscó, salvó, guió y llevará al creyente. La gracia es el sujeto activo del himno completo.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/gracia-admirable/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 32 -->
-      <div class="song-card">
-        <span class="song-num">32</span>
-        <div class="song-body">
-          <div class="song-title">La Cruz Excelsa</div>
-          <div class="song-author">Isaac Watts (1707) · When I Survey in español</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Watts presenta la cruz como objeto de contemplación maravillada. Cada estrofa describe lo que Cristo entregó, no lo que el creyente ganó. La respuesta es rendición total, no satisfacción personal.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/la-cruz-excelsa/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 33 -->
-      <div class="song-card">
-        <span class="song-num">33</span>
-        <div class="song-body">
-          <div class="song-title">¡Cuán Grande es Él!</div>
-          <div class="song-author">Carl Boberg / Stuart K. Hine · trad. al español</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Himno de contemplación de la grandeza divina en la creación y en la redención. El alma responde a lo que ve de Dios, no a lo que siente de sí misma. Una obra maestra teocéntrica.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/cuan-grande-es-el/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 34 -->
-      <div class="song-card">
-        <span class="song-num">34</span>
-        <div class="song-body">
-          <div class="song-title">Castillo Fuerte es Nuestro Dios</div>
-          <div class="song-author">Martín Lutero (1529) · Ein Feste Burg en español</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">El himno de la Reforma. Dios como fortaleza inexpugnable. Cristo como el Campeón que vence al enemigo. El triunfo es de Dios; al creyente solo le corresponde confiar y cantar.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/castillo-fuerte/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 35 -->
-      <div class="song-card">
-        <span class="song-num">35</span>
-        <div class="song-body">
-          <div class="song-title">¡Cuán Firme Cimiento!</div>
-          <div class="song-author">John Rippon (1787) · How Firm a Foundation</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Dios mismo habla en cada estrofa, prometiendo su presencia, fuerza y fidelidad. El fundamento es la Palabra de Dios —no la fe del creyente, sino el objeto de esa fe.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/cuan-firme-cimiento/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 36 -->
-      <div class="song-card">
-        <span class="song-num">36</span>
-        <div class="song-body">
-          <div class="song-title">Santo, Santo, Santo</div>
-          <div class="song-author">Reginald Heber (1826) · Holy, Holy, Holy</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">La liturgia del cielo cantada por la iglesia. La Trinidad adorada en su perfección. Es quizás el himno más objetivamente teocéntrico que existe: todo el contenido es descripción de Dios.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/santo-santo-santo/" target="_blank">HdG</a>
-          <a class="link-btn" href="https://graciaydevocion.web.app/" target="_blank">Himnario GD</a>
-        </div>
-      </div>
-
-      <!-- 37 -->
-      <div class="song-card">
-        <span class="song-num">37</span>
-        <div class="song-body">
-          <div class="song-title">A Cristo Coronad</div>
-          <div class="song-author">Matthew Bridges (1851) · Crown Him with Many Crowns</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Himno de coronación cristológica. Cada estrofa corona a Cristo en un aspecto diferente de su dominio y gloria. La congregación proclama su reinado, no solicita bendiciones.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/a-cristo-coronad/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 38 -->
-      <div class="song-card">
-        <span class="song-num">38</span>
-        <div class="song-body">
-          <div class="song-title">Grande es Tu Fidelidad</div>
-          <div class="song-author">Thomas Chisholm (1923) · Great is Thy Faithfulness</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Celebra la fidelidad de Dios como atributo permanente —no dependiente de las circunstancias. La misericordia se renueva cada mañana porque Dios es fiel, no porque el creyente lo merece.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/grande-es-tu-fidelidad/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 39 -->
-      <div class="song-card">
-        <span class="song-num">39</span>
-        <div class="song-body">
-          <div class="song-title">El Profundo Amor de Cristo</div>
-          <div class="song-author">Samuel Trevor Francis (1875)</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Himno oceánico: el amor de Cristo descrito como un mar sin orillas. El creyente está sumergido en ese amor que precede, rodea y persigue. La iniciativa es siempre del amor divino.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/el-profundo-amor-de-cristo/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 40 -->
-      <div class="song-card">
-        <span class="song-num">40</span>
-        <div class="song-body">
-          <div class="song-title">Doxología</div>
-          <div class="song-author">Thomas Ken (1674) · Old Hundredth · Praise God from Whom</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Cuatro líneas que contienen toda la teología trinitaria de la adoración. La congregación alaba al Padre, al Hijo y al Espíritu. Purísimamente teocéntrico por definición y vocación.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/doxologia/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 41 -->
-      <div class="song-card">
-        <span class="song-num">41</span>
-        <div class="song-body">
-          <div class="song-title">Profundo es el Amor de Dios</div>
-          <div class="song-author">Frederick M. Lehman (1917) · The Love of God</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">El amor de Dios descrito como más grande que el mar y más alto que los cielos. Si el océano fuera tinta, no alcanzaría para describir el amor divino. Asombro genuino ante el carácter de Dios.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/profundo-es-el-amor-de-dios/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 42 -->
-      <div class="song-card">
-        <span class="song-num">42</span>
-        <div class="song-body">
-          <div class="song-title">La Gloria de la Cruz</div>
-          <div class="song-author">Himnos de Gracia · contemporáneo reformado</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Celebra el misterio de que la cruz —instrumento de vergüenza— se convirtió en la revelación máxima de la gloria de Dios. El evangelio como paradoja de la sabiduría divina.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/la-gloria-de-la-cruz/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 43 -->
-      <div class="song-card">
-        <span class="song-num">43</span>
-        <div class="song-body">
-          <div class="song-title">Alma, Bendice al Señor</div>
-          <div class="song-author">Joachim Neander (1680) · Lobe den Herren</div>
-          <div><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
-          <div class="song-note">Basada en el Salmo 103. El alma convocada a bendecir a Dios por su nombre, sus obras, su gobierno, su gracia. Una doxología narrativa que cataloga las perfecciones divinas.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/alma-bendice-al-senor/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 44 -->
-      <div class="song-card">
-        <span class="song-num">44</span>
-        <div class="song-body">
-          <div class="song-title">En la Cruz</div>
-          <div class="song-author">Isaac Watts · At the Cross · Himnos de Gracia</div>
-          <div><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
-          <div class="song-note">Watts contempla la cruz con asombro y lleva al creyente a preguntarse cómo puede ser que el Hijo de Dios haya muerto por él. El asombro nace del acto divino, no de la emoción del creyente.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/en-la-cruz/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 45 -->
-      <div class="song-card">
-        <span class="song-num">45</span>
-        <div class="song-body">
-          <div class="song-title">La Roca de Mi Salvación</div>
-          <div class="song-author">Sovereign Grace Music / Himnos de Gracia</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Cristo presentado como la Roca inamovible sobre la cual descansa la salvación. La seguridad del creyente no descansa en sus obras sino en la solidez de la Roca divina.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/la-roca-de-mi-salvacion/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 46 -->
-      <div class="song-card">
-        <span class="song-num">46</span>
-        <div class="song-body">
-          <div class="song-title">En Cristo Está Mi Salvación</div>
-          <div class="song-author">Sovereign Grace Music · Himnos de Gracia</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
-          <div class="song-note">La salvación ubicada exclusivamente en Cristo: su muerte, su resurrección, su intercesión. El creyente no trae nada; Cristo lo proveyó todo. Una declaración de fe pura en el objeto correcto.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/en-cristo-esta-mi-salvacion/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 47 -->
-      <div class="song-card">
-        <span class="song-num">47</span>
-        <div class="song-body">
-          <div class="song-title">Gócense los Pueblos</div>
-          <div class="song-author">John Piper (texto) · trad. Himnos de Gracia</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Himno misionero basado en el Salmo 67. Dios glorificado en las naciones. El gozo de los pueblos viene del conocimiento de Dios —no al revés. El fin es la gloria de Dios entre todas las naciones.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/gocense-los-pueblos/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 48 -->
-      <div class="song-card">
-        <span class="song-num">48</span>
-        <div class="song-body">
-          <div class="song-title">Por Fe</div>
-          <div class="song-author">Keith & Kristyn Getty, Stuart Townend · trad. HdG</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Himno de la fe que describe la historia de la redención desde el Edén hasta la gloria futura. La fe no es el acto del creyente —es la respuesta a las promesas y obras de Dios a través de la historia.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://himnosdegracia.com/por-fe/" target="_blank">HdG</a>
-        </div>
-      </div>
-
-      <!-- 49 -->
-      <div class="song-card">
-        <span class="song-num">49</span>
-        <div class="song-body">
-          <div class="song-title">Sublime Gracia</div>
-          <div class="song-author">Himnario tradicional evangélico · versión clásica</div>
-          <div><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Versión alternativa de Amazing Grace usada en contextos hispanos tradicionales. La gracia como único agente de transformación del pecador. El lenguaje del asombro ante lo inmerecido.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://graciaydevocion.web.app/" target="_blank">Himnario GD</a>
-          <a class="link-btn" href="http://himnarioevangelicolatinoamericano.blogspot.com/2015/11/oh-gracia-admirable.html" target="_blank">Blog himn.</a>
-        </div>
-      </div>
-
-      <!-- 50 -->
-      <div class="song-card">
-        <span class="song-num">50</span>
-        <div class="song-body">
-          <div class="song-title">El Es Digno</div>
-          <div class="song-author">Sovereign Grace Music · Himnos de Gracia</div>
-          <div><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
-          <div class="song-note">Proclamación de la dignidad de Cristo para recibir honor, gloria y poder. La congregación declara lo que Él merece —no lo que nosotros necesitamos. Adoración directa y objetiva basada en Apocalipsis 5.</div>
-        </div>
-        <div class="song-links">
-          <a class="link-btn" href="https://sovereigngracemusic.com/music/songs/el-es-digno/" target="_blank">SGM</a>
-          <a class="link-btn" href="https://himnosdegracia.com/" target="_blank">HdG</a>
-        </div>
-      </div>
-
+<!-- 31 -->
+<div class="song-card">
+  <span class="song-num">31</span>
+  <div class="song-body">
+    <div class="song-title">Gracia Admirable</div>
+    <div class="song-author">John Newton (1779) · Amazing Grace en español</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">El himno emblemático de la gracia soberana. Dios buscó, salvó, guió y llevará al creyente. La gracia es el sujeto activo del himno completo.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Gracia+Admirable+Amazing+Grace+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/gracia-admirable/" target="_blank">✦ Letra</a>
     </div>
+  </div>
+</div>
+
+<!-- 32 -->
+<div class="song-card">
+  <span class="song-num">32</span>
+  <div class="song-body">
+    <div class="song-title">La Cruz Excelsa</div>
+    <div class="song-author">Isaac Watts (1707) · When I Survey in español</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Watts presenta la cruz como objeto de contemplación maravillada. Cada estrofa describe lo que Cristo entregó. La respuesta es rendición total, no satisfacción personal.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=La+Cruz+Excelsa+When+I+Survey+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/la-cruz-excelsa/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 33 -->
+<div class="song-card">
+  <span class="song-num">33</span>
+  <div class="song-body">
+    <div class="song-title">¡Cuán Grande es Él!</div>
+    <div class="song-author">Carl Boberg / Stuart K. Hine · How Great Thou Art</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Himno de contemplación de la grandeza divina en la creación y en la redención. El alma responde a lo que ve de Dios, no a lo que siente de sí misma.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Cuán+Grande+es+Él+How+Great+Thou+Art+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/cuan-grande-es-el/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 34 -->
+<div class="song-card">
+  <span class="song-num">34</span>
+  <div class="song-body">
+    <div class="song-title">Castillo Fuerte es Nuestro Dios</div>
+    <div class="song-author">Martín Lutero (1529) · Ein Feste Burg en español</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">El himno de la Reforma. Dios como fortaleza inexpugnable. Cristo como el Campeón que vence al enemigo. El triunfo es de Dios.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Castillo+Fuerte+Martín+Lutero+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/castillo-fuerte/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 35 -->
+<div class="song-card">
+  <span class="song-num">35</span>
+  <div class="song-body">
+    <div class="song-title">¡Cuán Firme Cimiento!</div>
+    <div class="song-author">John Rippon (1787) · How Firm a Foundation</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Dios mismo habla en cada estrofa, prometiendo su presencia y fidelidad. El fundamento es la Palabra de Dios — no la fe del creyente, sino el objeto de esa fe.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Cuán+Firme+Cimiento+How+Firm+a+Foundation+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/cuan-firme-cimiento/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 36 -->
+<div class="song-card">
+  <span class="song-num">36</span>
+  <div class="song-body">
+    <div class="song-title">Santo, Santo, Santo</div>
+    <div class="song-author">Reginald Heber (1826) · Holy, Holy, Holy</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">La liturgia del cielo cantada por la iglesia. La Trinidad adorada en su perfección. Quizás el himno más objetivamente teocéntrico que existe: todo el contenido describe a Dios.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Santo+Santo+Santo+Reginald+Heber+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Santo%20Santo%20Santo%20himno%20español" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/santo-santo-santo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 37 -->
+<div class="song-card">
+  <span class="song-num">37</span>
+  <div class="song-body">
+    <div class="song-title">A Cristo Coronad</div>
+    <div class="song-author">Matthew Bridges (1851) · Crown Him with Many Crowns</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Himno de coronación cristológica. Cada estrofa corona a Cristo en un aspecto diferente de su dominio y gloria. La congregación proclama su reinado, no solicita bendiciones.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=A+Cristo+Coronad+Crown+Him+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/a-cristo-coronad/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 38 -->
+<div class="song-card">
+  <span class="song-num">38</span>
+  <div class="song-body">
+    <div class="song-title">Grande es Tu Fidelidad</div>
+    <div class="song-author">Thomas Chisholm (1923) · Great is Thy Faithfulness</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">La fidelidad de Dios como atributo permanente. La misericordia se renueva cada mañana porque Dios es fiel, no porque el creyente lo merece.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Grande+es+Tu+Fidelidad+Great+is+Thy+Faithfulness+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Grande%20es%20Tu%20Fidelidad%20himno%20español" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/grande-es-tu-fidelidad/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 39 -->
+<div class="song-card">
+  <span class="song-num">39</span>
+  <div class="song-body">
+    <div class="song-title">El Profundo Amor de Cristo</div>
+    <div class="song-author">Samuel Trevor Francis (1875)</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Himno oceánico: el amor de Cristo descrito como un mar sin orillas. El creyente está sumergido en ese amor que precede, rodea y persigue. La iniciativa es siempre del amor divino.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=El+Profundo+Amor+de+Cristo+español+himno+reformado" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/el-profundo-amor-de-cristo/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 40 -->
+<div class="song-card">
+  <span class="song-num">40</span>
+  <div class="song-body">
+    <div class="song-title">Doxología</div>
+    <div class="song-author">Thomas Ken (1674) · Old Hundredth · Praise God from Whom</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Cuatro líneas que contienen toda la teología trinitaria de la adoración. La congregación alaba al Padre, al Hijo y al Espíritu. Purísimamente teocéntrico por definición y vocación.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Doxología+Thomas+Ken+español+himno+congregacional" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/doxologia/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 41 -->
+<div class="song-card">
+  <span class="song-num">41</span>
+  <div class="song-body">
+    <div class="song-title">Profundo es el Amor de Dios</div>
+    <div class="song-author">Frederick M. Lehman (1917) · The Love of God</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">El amor de Dios más grande que el mar y más alto que los cielos. Si el océano fuera tinta, no alcanzaría para describir el amor divino. Asombro genuino ante el carácter de Dios.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Profundo+es+el+Amor+de+Dios+The+Love+of+God+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/profundo-es-el-amor-de-dios/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 42 -->
+<div class="song-card">
+  <span class="song-num">42</span>
+  <div class="song-body">
+    <div class="song-title">Alma, Bendice al Señor</div>
+    <div class="song-author">Joachim Neander (1680) · Lobe den Herren</div>
+    <div class="song-tags"><span class="tag tag-dios">Dios</span><span class="tag tag-gloria">Gloria</span></div>
+    <div class="song-note">Basada en el Salmo 103. El alma convocada a bendecir a Dios por su nombre, sus obras, su gobierno, su gracia. Doxología narrativa que cataloga las perfecciones divinas.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Alma+Bendice+al+Señor+Lobe+den+Herren+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/alma-bendice-al-senor/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 43 -->
+<div class="song-card">
+  <span class="song-num">43</span>
+  <div class="song-body">
+    <div class="song-title">En la Cruz</div>
+    <div class="song-author">Isaac Watts · At the Cross · Himnos de Gracia</div>
+    <div class="song-tags"><span class="tag tag-cruz">Cruz</span><span class="tag tag-gracia">Gracia</span></div>
+    <div class="song-note">Watts contempla la cruz con asombro. Pregunta cómo puede ser que el Hijo de Dios haya muerto por él. El asombro nace del acto divino, no de la emoción del creyente.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=En+la+Cruz+At+the+Cross+Watts+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/en-la-cruz/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 44 -->
+<div class="song-card">
+  <span class="song-num">44</span>
+  <div class="song-body">
+    <div class="song-title">La Roca de Mi Salvación</div>
+    <div class="song-author">Sovereign Grace Music / Himnos de Gracia</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Cristo presentado como la Roca inamovible. La seguridad del creyente no descansa en sus obras sino en la solidez de la Roca divina.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=La+Roca+de+Mi+Salvación+español+himno+reformado" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/la-roca-de-mi-salvacion/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 45 -->
+<div class="song-card">
+  <span class="song-num">45</span>
+  <div class="song-body">
+    <div class="song-title">En Cristo Está Mi Salvación</div>
+    <div class="song-author">Sovereign Grace Music · Himnos de Gracia</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
+    <div class="song-note">La salvación ubicada exclusivamente en Cristo: su muerte, su resurrección, su intercesión. El creyente no trae nada; Cristo lo proveyó todo.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=En+Cristo+Está+Mi+Salvación+Sovereign+Grace+Music" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/en-cristo-esta-mi-salvacion/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 46 -->
+<div class="song-card">
+  <span class="song-num">46</span>
+  <div class="song-body">
+    <div class="song-title">Gócense los Pueblos</div>
+    <div class="song-author">John Piper (texto) · trad. Himnos de Gracia</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Himno misionero basado en el Salmo 67. Dios glorificado en las naciones. El gozo de los pueblos viene del conocimiento de Dios — el fin es la gloria de Dios entre todas las naciones.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Gócense+los+Pueblos+John+Piper+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/gocense-los-pueblos/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 47 -->
+<div class="song-card">
+  <span class="song-num">47</span>
+  <div class="song-body">
+    <div class="song-title">Por Fe</div>
+    <div class="song-author">Keith & Kristyn Getty, Stuart Townend · trad. HdG</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Historia de la redención desde el Edén hasta la gloria futura. La fe no es el acto del creyente — es la respuesta a las promesas y obras de Dios a través de la historia.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Por+Fe+Keith+Getty+By+Faith+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/por-fe/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+<!-- 48 -->
+<div class="song-card">
+  <span class="song-num">48</span>
+  <div class="song-body">
+    <div class="song-title">Sublime Gracia</div>
+    <div class="song-author">John Newton · versión tradicional hispana</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Variante tradicional de Amazing Grace. La gracia como único agente de transformación del pecador. El lenguaje del asombro ante lo inmerecido.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Sublime+Gracia+Amazing+Grace+español+himno+congregacional" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Sublime%20Gracia%20himno%20español" target="_blank">● Spotify</a>
+      <a class="alink alink-letra" href="https://graciaydevocion.web.app/" target="_blank">✦ Himnario</a>
+    </div>
+  </div>
+</div>
+
+<!-- 49 -->
+<div class="song-card">
+  <span class="song-num">49</span>
+  <div class="song-body">
+    <div class="song-title">Solo en Jesús (Cornerstone)</div>
+    <div class="song-author">Eric Liljero, Reuben Morgan, Jonas Myrin · trad. HdG / GSM</div>
+    <div class="song-tags"><span class="tag tag-gracia">Gracia</span><span class="tag tag-cruz">Cruz</span></div>
+    <div class="song-note">Cristo como la Piedra angular: la gracia declarada en su vida, muerte y resurrección. "Mi esperanza está puesta en el Señor" — no en la experiencia personal sino en la obra objetiva de Dios.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Solo+en+Jesús+Cornerstone+español+himno" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Solo%20en%20Jes%C3%BAs%20Cornerstone%20espa%C3%B1ol" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/" target="_blank">✦ HdG</a>
+    </div>
+  </div>
+</div>
+
+<!-- 50 -->
+<div class="song-card">
+  <span class="song-num">50</span>
+  <div class="song-body">
+    <div class="song-title">Él es Digno</div>
+    <div class="song-author">Sovereign Grace Music · Himnos de Gracia</div>
+    <div class="song-tags"><span class="tag tag-gloria">Gloria</span><span class="tag tag-dios">Dios</span></div>
+    <div class="song-note">Proclamación de la dignidad de Cristo para recibir honor, gloria y poder. La congregación declara lo que Él merece — no lo que nosotros necesitamos. Adoración directa basada en Apocalipsis 5.</div>
+    <div class="audio-links">
+      <a class="alink alink-yt" href="https://www.youtube.com/results?search_query=Él+es+Digno+Sovereign+Grace+Music+español" target="_blank">▶ YouTube</a>
+      <a class="alink alink-sp" href="https://open.spotify.com/search/Worthy%20is%20the%20Lamb%20Sovereign%20Grace%20Music%20español" target="_blank">● Spotify</a>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">⬇ MP3</a>
+      <a class="alink alink-letra" href="https://sovereigngracemusic.com/music/songs/el-es-digno/" target="_blank">✦ Letra</a>
+    </div>
+  </div>
+</div>
+
+    </div><!-- end section 2 -->
   </section>
 
-  <!-- RECURSOS -->
-  <section class="criteria" style="margin-bottom:32px;">
-    <h3>Recursos Principales — Fuentes Directas</h3>
-    <ul style="list-style:none;gap:12px;">
-      <li style="padding-left:0;"><strong style="color:var(--gold);">graciasoberanamusica.com</strong> — Letras, acordes, recursos de todas las canciones de Gracia Soberana Música en español</li>
-      <li style="padding-left:0;"><strong style="color:var(--gold);">sovereigngracemusic.com/espanol</strong> — Recurso oficial de Sovereign Grace Music con traducciones, partituras y letras en español</li>
-      <li style="padding-left:0;"><strong style="color:var(--gold);">himnosdegracia.com</strong> — Himnario con más de 100 himnos tradicionales y contemporáneos, letras en PDF y melodías MP3 gratuitas</li>
-      <li style="padding-left:0;"><strong style="color:var(--gold);">graciaydevocion.web.app</strong> — Himnario evangélico digital con 424 himnos tradicionales en español</li>
-    </ul>
-  </section>
+  <!-- CANALES Y RECURSOS -->
+  <div class="resources-box">
+    <h3>Canales y Plataformas de Audio Recomendadas</h3>
+    <div class="resource-row">
+      <span style="font-size:18px;">▶</span>
+      <div>
+        <div class="res-name">Canal YouTube Gracia Soberana Música</div>
+        <div class="res-desc">Canal oficial en español con videos de adoración, letras animadas y grabaciones en vivo</div>
+      </div>
+      <a class="alink alink-yt" href="https://www.youtube.com/@graciasoberanamusica" target="_blank">Ir al canal</a>
+    </div>
+    <div class="resource-row">
+      <span style="font-size:18px;">▶</span>
+      <div>
+        <div class="res-name">Canal YouTube Sovereign Grace Music</div>
+        <div class="res-desc">Canal principal con archivo de canciones en inglés y español desde 1984</div>
+      </div>
+      <a class="alink alink-yt" href="https://www.youtube.com/@sovereigngracemusic" target="_blank">Ir al canal</a>
+    </div>
+    <div class="resource-row">
+      <span style="font-size:18px;">●</span>
+      <div>
+        <div class="res-name">Spotify — Gracia Soberana Música</div>
+        <div class="res-desc">Todos los álbumes en streaming: Eres Dios, Sea La Gloria Solo a Ti, Conocer a Dios (2024)</div>
+      </div>
+      <a class="alink alink-sp" href="https://open.spotify.com/intl-es/artist/3yZLchlyOSmGC6B6bUhgVU" target="_blank">Escuchar</a>
+    </div>
+    <div class="resource-row">
+      <span style="font-size:18px;">⬇</span>
+      <div>
+        <div class="res-name">Melodías MP3 — Himnos de Gracia</div>
+        <div class="res-desc">Descarga gratuita de melodías MP3 para todos los himnos del himnario Himnos de Gracia</div>
+      </div>
+      <a class="alink alink-mp3" href="https://himnosdegracia.com/melodias-mp3/" target="_blank">Descargar</a>
+    </div>
+    <div class="resource-row">
+      <span style="font-size:18px;">✦</span>
+      <div>
+        <div class="res-name">Letras PDF — Himnos de Gracia</div>
+        <div class="res-desc">PDFs gratuitos de letras para proyectar en iglesias. Recurso indispensable para líderes de adoración</div>
+      </div>
+      <a class="alink alink-letra" href="https://himnosdegracia.com/letra-en-pdf/" target="_blank">Ver PDFs</a>
+    </div>
+    <div class="resource-row">
+      <span style="font-size:18px;">♩</span>
+      <div>
+        <div class="res-name">Himnario Gracia y Devoción (digital)</div>
+        <div class="res-desc">424 himnos evangélicos tradicionales en español. Completamente gratuito y online</div>
+      </div>
+      <a class="alink alink-letra" href="https://graciaydevocion.web.app/" target="_blank">Abrir</a>
+    </div>
+  </div>
 
   <!-- FOOTER -->
   <footer class="footer">
     <p>Compilado con criterios de <strong>adoración teocéntrica</strong> — Soli Deo Gloria</p>
-    <p style="margin-top:8px;font-size:12px;">Fuentes: Gracia Soberana Música · Sovereign Grace Music · Himnos de Gracia · Himnario Gracia y Devoción</p>
-    <p style="margin-top:6px;font-size:12px;color:var(--gold-dim);">«Sea la Palabra de Cristo abundando en vosotros en toda sabiduría, enseñándoos y exhortándoos unos a otros con salmos, himnos y cánticos espirituales» — Colosenses 3:16</p>
+    <p style="margin-top:6px;font-size:12px;">Los links de YouTube llevan a búsquedas directas que mostrarán el video más relevante. Los links de Spotify abren la canción o búsqueda directamente.</p>
+    <p style="margin-top:10px;font-size:12px;color:var(--gold-dim);">«Sea la Palabra de Cristo abundando en vosotros en toda sabiduría, enseñándoos y exhortándoos unos a otros con salmos, himnos y cánticos espirituales» — Colosenses 3:16</p>
   </footer>
 
 </div>
